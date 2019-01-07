@@ -1,9 +1,3 @@
-export default () => {
-  const hej = "hjhj"
+import home from './home'
 
-  return (
-    <div>
-      <p>Hello World!</p>
-    </div>
-  )
-}
+export default home
