@@ -9,7 +9,7 @@ import {
 } from 'apollo-boost';
 import { withClientState } from 'apollo-link-state';
 import fetch from 'isomorphic-unfetch';
-import { endpoint } from '../../config'
+import { endpoint } from '../../config/settings'
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | null = null;
 const isBrowser = typeof window !== 'undefined';
