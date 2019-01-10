@@ -1,3 +1,3 @@
-import home from './home'
+import dishes from './dishes'
 
-export default home
+export default dishes
