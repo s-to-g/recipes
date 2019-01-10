@@ -1,7 +1,7 @@
 import React from 'react'
 import { Query, } from 'react-apollo'
 import gql from 'graphql-tag'
-import Link from 'next/link'
+import { Link } from '../routes';
 import styled from 'styled-components'
 
 import withData from '../utils/apollo/withData'
@@ -57,11 +57,11 @@ const dishes = () => (
           {data.dishes.map((item) =>
             <Item>
               <Link
-                href={{ pathname: '/dish', query: { id: item.id }}}
-                // route="dish"
-                // params={{
-                //   slug: slugify("test Slug")
-                // }}
+                // href={{ pathname: '/dish', query: { id: item.id }}}
+                route="dish"
+                params={{
+                  slug: slugify("test Slug")
+                }}
               >
                 <a style={{ display: 'block' }}>
                   {item.name}

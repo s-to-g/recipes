@@ -1,11 +1,13 @@
 {
   "scripts": {
-    "dev": "next"
+    "dev": "next server.ts"
   },
   "dependencies": {
+    "@types/express": "types/express",
     "@zeit/next-typescript": "^1.1.1",
     "apollo-boost": "^0.1.23",
     "apollo-link-state": "^0.4.2",
+    "express": "^4.16.4",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
     "isomorphic-unfetch": "^3.0.0",

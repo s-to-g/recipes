@@ -4,11 +4,9 @@ import routes from './routes'
 
 const port = parseInt(process.env.PORT || '3000', 10)
 const dev = process.env.NODE_ENV !== 'production'
-// const app = next({dev: process.env.NODE_ENV !== 'production'})
-
 const app = next({
   dev,
-  dir: './',
+  dir: './app',
 })
 
 const handler = routes.getRequestHandler(app)
