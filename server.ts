@@ -6,7 +6,7 @@ const port = parseInt(process.env.PORT || '3000', 10)
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({
   dev,
-  dir: './app',
+  // dir: './app',
 })
 
 const handler = routes.getRequestHandler(app)
