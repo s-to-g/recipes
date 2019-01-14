@@ -1,17 +1,17 @@
 import React from 'react'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
-import withData from '../utils/apollo/withData'
-import Page from '../components/Page'
-import Heading from '../components/Heading'
+import withData from '../../utils/apollo/withData'
+import Page from '../../components/Page'
+import Heading from '../../components/Heading'
 
 interface Props {
   product: any,
 }
 
-const GET_DISH = (id: String) => gql`
+const GET_DISH = (slug: String) => gql`
     query GET_DISH {
-      dish(where: {id: "${id}"}) {
+      dish(where: {slug: "${slug}"}) {
         name
       }
     }
@@ -19,9 +19,10 @@ const GET_DISH = (id: String) => gql`
 
 class Dish extends React.Component<Props> {
   render() {
-    const {id} = this.props.query
+    const {slug} = this.props.query
+    console.log({ slug })
     return <Page>
-        <Query query={GET_DISH(id)}>
+        <Query query={GET_DISH(slug)}>
           {({data, error, loading}) => {
             console.log({loading}, {error}, {data})
             if (loading) {

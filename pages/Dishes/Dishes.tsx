@@ -1,26 +1,18 @@
 import React from 'react'
 import { Query, } from 'react-apollo'
 import gql from 'graphql-tag'
-import { Link } from '../routes';
 import styled from 'styled-components'
 
-import withData from '../utils/apollo/withData'
-import Page from '../components/Page'
-
-// TODO move function to utils file
-const slugify = (text) => {
-  const slug = text
-    .toLowerCase()
-    .replace(/ /g, '-')
-    .replace(/[^\w-]+/g, '')
-  return slug
-}
+import {Link} from '../../routes'
+import withData from '../../utils/apollo/withData'
+import Page from '../../components/Page'
 
 const ALL_RECIPES_QUERY = gql`
   query ALL_RECIPES_QUERY {
     dishes {
       name
       id
+      slug
       image {
         url
       }
@@ -43,7 +35,7 @@ const Item = styled.div`
   }
 `
 
-const dishes = () => (
+const Dishes = () => (
   <Page>
     <Query query={ALL_RECIPES_QUERY}>
       {({ loading, error, data }) => {
@@ -54,13 +46,13 @@ const dishes = () => (
           return <p>Error</p>
         }
         return <ItemsWrapper>
-          {data.dishes.map((item) =>
+          {data.dishes.map((item) => (
             <Item>
               <Link
                 // href={{ pathname: '/dish', query: { id: item.id }}}
                 route="dish"
                 params={{
-                  slug: slugify("test Slug")
+                  slug: item.slug
                 }}
               >
                 <a style={{ display: 'block' }}>
@@ -69,11 +61,11 @@ const dishes = () => (
                 </a>
               </Link>
             </Item>
-          )}
+          ))}
         </ItemsWrapper>
       }}
     </Query>
   </Page>
 )
 
-export default withData(dishes)
+export default withData(Dishes)
